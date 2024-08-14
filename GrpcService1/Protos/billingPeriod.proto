@@ -1,0 +1,22 @@
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+
+option csharp_namespace = "GrpcService1";
+
+package billingPeriod;
+import "Protos/google/api/annotations.proto";
+service billingPeriod {
+  rpc GetData (StartDate) returns (FetchResult){
+    option (google.api.http) = {
+      get: "/billingPeriod/{date}"
+    };
+  };
+}
+
+message StartDate {
+  string date = 1;
+}
+
+message FetchResult {
+  string result = 1;
+}
